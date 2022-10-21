@@ -3,6 +3,7 @@ const routes = express.Router();
 
 const authController = require('../controller/authController');
 const atendimentoController = require('../controller/atendimentoController');
+const dashboardController = require('../controller/dashboardController');
 const psicologoController = require('../controller/psicologoController'); 
 const pacienteController = require('../controller/pacienteController');
 const authCadastroPsicologo = require('../validations/auth/cadastroPsi');
@@ -24,6 +25,12 @@ routes.get('/pacientes', pacienteController.listarPacientes);
 routes.get('/pacientes/:id', pacienteController.listarPacientesPorID);
 routes.put('/pacientes/:id', pacienteController.atualizarPacientes);
 routes.delete('/pacientes/:id', pacienteController.removerPacientes);
+
+routes.get('/dashboard/numero-atendimento', dashboardController.numeroAtendimentos);
+routes.get('/dashboard/numero-paciente', dashboardController.numeroPacientes);
+routes.get('/dashboard/numero-psicologo', dashboardController.numeroPsicologos);
+routes.get('/dashboard/media-psicolog', dashboardController.mediaPorPsicologo);
+
 
 routes.post('/login', authLogin, authController.login);
 
